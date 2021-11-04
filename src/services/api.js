@@ -2,9 +2,9 @@ import axios from "axios";
 
 export const api = axios.create({ baseURL: "https://randomuser.me/api" });
 
-export const getPacientsFromAPI = async (page = 1, items = 200) => {
+export const getPacientsFromAPI = async (items = 500) => {
   const response = await api.get("/", {
-    params: { page: page, results: items, seed: "jaba" },
+    params: { results: items, seed: "jaba" },
   });
 
   const { info, results } = response.data;

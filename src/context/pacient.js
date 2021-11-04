@@ -9,28 +9,17 @@ export const usePacient = () => useContext(PacientContext);
 export const PacientProvider = ({ children }) => {
   const [pacients, setPacients] = useState([]);
   const [search, setSearch] = useState([]);
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(500);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     async function getClients() {
       setLoading(true);
-      const { data, pageActual } = await getPacientsFromAPI(page, perPage);
+      const { data } = await getPacientsFromAPI();
       setPacients(data);
-      setPage(pageActual);
       setLoading(false);
     }
     getClients();
-  }, [page, perPage]);
-
-  const loadMore = async () => {
-    setLoading(true);
-    const { data, pageActual } = await getPacientsFromAPI(page + 1, perPage);
-    setPacients(data);
-    setPage(pageActual);
-    setLoading(false);
-  };
+  }, []);
 
   const searchPacients = (term) => {
     const fuse = new Fuse(pacients, {
@@ -44,7 +33,7 @@ export const PacientProvider = ({ children }) => {
 
   const getPacient = async (id) => {
     setLoading(true);
-    const { data, pageActual } = await getPacientsFromAPI(page, perPage);
+    const { data } = await getPacientsFromAPI();
 
     const pacient = data.filter(({ login }) => login.uuid === id);
 
@@ -57,7 +46,7 @@ export const PacientProvider = ({ children }) => {
     <PacientContext.Provider
       value={{
         pacients,
-        loadMore,
+
         loading,
         searchPacients,
         search,
