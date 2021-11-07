@@ -74,8 +74,15 @@ function TablePacients({ data }) {
   const filterGender = (e) => {
     const { value } = e.target;
     setPacients(data);
-    if (value !== "all") {
-      setPacients(data);
+    if (value === "male") {
+      setPacients((pacients) =>
+        pacients.filter((pacient) => pacient.gender === "male")
+      );
+    }
+    if (value === "female") {
+      setPacients((pacients) =>
+        pacients.filter((pacient) => pacient.gender === "female")
+      );
     }
   };
 
