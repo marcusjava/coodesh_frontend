@@ -3,6 +3,11 @@ import { Link } from "react-router-dom";
 
 export const Container = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  margin-bottom: 30px;
 `;
 
 export const StyledTable = styled.table`
@@ -39,6 +44,12 @@ export const ActionButton = styled(Link)`
   &:hover {
     background-color: #40916c;
   }
+`;
+
+export const Button = styled.button`
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
 `;
 
 export const Thumbnail = styled.img`

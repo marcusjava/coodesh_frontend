@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
 import { IconContext } from "react-icons";
 import { BiDetail } from "react-icons/bi";
+import { BsLink } from "react-icons/bs";
 import { AiOutlineClose } from "react-icons/ai";
 import dayjs from "dayjs";
 
@@ -11,6 +12,7 @@ import {
   Thumbnail,
   Container,
   Title,
+  LinkButton,
 } from "./styles/modal";
 
 function DetailsModal({ detail }) {
@@ -28,8 +30,6 @@ function DetailsModal({ detail }) {
     picture: { large },
   } = detail;
 
-  console.log(detail);
-
   return (
     <>
       <Button onClick={() => setShow(true)}>
@@ -44,6 +44,7 @@ function DetailsModal({ detail }) {
               <AiOutlineClose />
             </CloseButton>
             <Thumbnail src={large} alt="profile picture" />
+
             <Title>{`${name.first} ${name.last}`}</Title>
             <h5>ID: {uuid}</h5>
             <h5>Email: {email}</h5>
@@ -53,6 +54,13 @@ function DetailsModal({ detail }) {
             <h5>Sexo: {gender === "female" ? "Feminino" : "Masculino"}</h5>
             <h5>Nasc: {dayjs(dob.date).format("DD/MM/YYYY")}</h5>
             <h5>Idade: {dob.age}</h5>
+            <LinkButton to={`/${uuid}`}>
+              <IconContext.Provider
+                value={{ style: { fontSize: "25px", color: "black" } }}
+              >
+                <BsLink />
+              </IconContext.Provider>
+            </LinkButton>
           </Container>
         </ModalBody>
       </Modal>

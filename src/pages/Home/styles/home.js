@@ -9,5 +9,5 @@ export const Container = styled.div`
 
 export const Content = styled.div`
   width: 60%;
-  margin-top: 100px;
+  margin: 100px 0;
 `;

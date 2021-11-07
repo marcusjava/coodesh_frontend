@@ -1,4 +1,5 @@
 import styled from "styled-components/macro";
+import { Link } from "react-router-dom";
 
 export const Button = styled.button`
   padding: 10px;
@@ -23,9 +24,9 @@ export const Container = styled.div`
   min-height: 550px;
   position: relative;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 `;
 
 export const Thumbnail = styled.img`
@@ -37,13 +38,16 @@ export const Thumbnail = styled.img`
 
 export const Title = styled.h2`
   font-weight: bold;
-  margin-bottom: 40px;
+  margin: 40px 0;
 `;
 
-export const Description = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
+export const LinkButton = styled(Link)`
+  padding: 10px;
+  border: none;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: #7b7c7c;
+  }
 `;

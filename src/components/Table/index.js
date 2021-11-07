@@ -1,10 +1,13 @@
 import dayjs from "dayjs";
-import React from "react";
-import { BiDetail } from "react-icons/bi";
-import { AiOutlineReload } from "react-icons/ai";
+import React, { useEffect, useState } from "react";
+
+import { Input, option, FormGroup } from "reactstrap";
 import { BsLink } from "react-icons/bs";
 import { IconContext } from "react-icons";
-
+import {
+  AiOutlineSortAscending,
+  AiOutlineSortDescending,
+} from "react-icons/ai";
 import {
   StyledTable,
   THead,
@@ -15,9 +18,9 @@ import {
   TD,
   ActionButton,
   Thumbnail,
+  Button,
   Container,
 } from "./styles/table";
-import { Button } from "reactstrap";
 import Spinner2 from "../Spinner2";
 import DetailsModal from "../Modal";
 import { usePacient } from "../../context/pacient";
@@ -51,6 +54,14 @@ Table.TD = ({ children, ...rest }) => {
 };
 
 function TablePacients({ data }) {
+  const [pacients, setPacients] = useState([]);
+
+  const { sort, sortPacientNames } = usePacient();
+
+  useEffect(() => {
+    setPacients(data);
+  }, [data]);
+
   const { loading } = usePacient();
   if (!data) {
     return (
@@ -60,14 +71,51 @@ function TablePacients({ data }) {
     );
   }
 
+  const filterGender = (e) => {
+    const { value } = e.target;
+    setPacients(data);
+    if (value !== "all") {
+      setPacients(data);
+    }
+  };
+
   return (
     <Container>
       <Table>
         <Table.Head>
           <Table.TR>
             <Table.TH>Foto</Table.TH>
-            <Table.TH>Nome</Table.TH>
-            <Table.TH>Genero</Table.TH>
+            <Table.TH>
+              Nome
+              {sort === "asc" ? (
+                <Button onClick={sortPacientNames}>
+                  <IconContext.Provider value={{ style: { fontSize: "25px" } }}>
+                    <AiOutlineSortAscending />
+                  </IconContext.Provider>
+                </Button>
+              ) : (
+                <Button onClick={sortPacientNames}>
+                  <IconContext.Provider value={{ style: { fontSize: "25px" } }}>
+                    <AiOutlineSortDescending />
+                  </IconContext.Provider>
+                </Button>
+              )}
+            </Table.TH>
+            <Table.TH style={{ overflow: "hidden" }}>
+              Genero
+              <FormGroup>
+                <Input
+                  bsSize="sm"
+                  type="select"
+                  style={{ width: "100px" }}
+                  onChange={filterGender}
+                >
+                  <option value="all">Ver Todos</option>
+                  <option value="male">Masculino</option>
+                  <option value="female">Feminino</option>
+                </Input>
+              </FormGroup>
+            </Table.TH>
             <Table.TH>Nasc.</Table.TH>
             <Table.TH>Idade</Table.TH>
             <Table.TH>Nacionalidade</Table.TH>
@@ -75,7 +123,7 @@ function TablePacients({ data }) {
           </Table.TR>
         </Table.Head>
         <Table.Body>
-          {data?.map((item) => (
+          {pacients?.map((item) => (
             <Table.TR key={item.dob.date}>
               <Table.TD>
                 <Thumbnail src={item.picture.thumbnail} alt="Foto perfil" />
@@ -89,7 +137,7 @@ function TablePacients({ data }) {
               <Table.TD>{item.nat}</Table.TD>
               <Table.TD>
                 <DetailsModal detail={item} />
-                <ActionButton to={`/${item.login.uuid}`} target="_blank">
+                <ActionButton to={`/${item.login.uuid}`}>
                   <IconContext.Provider
                     value={{ style: { fontSize: "25px", color: "black" } }}
                   >
@@ -101,6 +149,7 @@ function TablePacients({ data }) {
           ))}
         </Table.Body>
       </Table>
+
       <Spinner2 show={loading} />
     </Container>
   );

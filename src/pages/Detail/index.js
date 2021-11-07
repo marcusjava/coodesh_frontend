@@ -14,32 +14,20 @@ import {
 } from "./styles/detail";
 import { useParams } from "react-router-dom";
 import { usePacient } from "../../context/pacient";
-import Spinner from "../../components/Spinner2";
+import Spinner from "../../components/Spinner";
 
 // import { Container } from './styles';
 
 function Detail() {
-  const [detail, setDetail] = useState({});
-  const [show, setShow] = useState(false);
-
-  const { pacients, getPacient, loading } = usePacient();
+  const { pacients } = usePacient();
 
   const { id } = useParams();
+  const [detail, setDetail] = useState(
+    () => pacients.filter(({ login }) => login.uuid === id)[0]
+  );
 
-  useEffect(() => {
-    async function getDetail() {
-      const pacient = await getPacient(id);
-      setDetail(pacient);
-      setShow(true);
-    }
-
-    getDetail();
-  }, [id]);
-
-  return loading || Object.keys(detail).length === 0 ? (
-    <Spinner />
-  ) : (
-    <Modal isOpen={show} centered fullscreen size="lg">
+  return (
+    <Modal isOpen={true} centered={true} size="lg">
       <ModalBody>
         <Container>
           <Thumbnail src={detail.picture.large} alt="profile picture" />

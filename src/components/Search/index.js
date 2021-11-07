@@ -1,9 +1,11 @@
 import React from "react";
 import { Input } from "reactstrap";
+import { usePacient } from "../../context/pacient";
 
 import { Container } from "./styles/search";
 
-function Search({ searchPacients }) {
+function Search() {
+  const { searchPacients } = usePacient();
   return (
     <Container>
       <Input

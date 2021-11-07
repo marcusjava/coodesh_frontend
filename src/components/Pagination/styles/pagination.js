@@ -1,5 +1,7 @@
 import styled, { css } from "styled-components";
 
+export const Container = styled.div``;
+
 export const Pagination = styled.div`
   display: flex;
   align-items: center;
@@ -44,6 +46,9 @@ export const Button = styled.button`
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.4);
   margin: 0 10px;
   cursor: pointer;
+  &:hover {
+    background-color: #40916c;
+  }
 `;
 
 export const GoToPrevious = styled(Button)`

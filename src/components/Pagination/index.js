@@ -6,6 +6,7 @@ import {
   Item,
   GoToPrevious,
   GoToNext,
+  Container,
 } from "./styles/pagination";
 
 function PaginationTable({ data, RenderComponent, pageLimit, dataLimit }) {
@@ -34,9 +35,10 @@ function PaginationTable({ data, RenderComponent, pageLimit, dataLimit }) {
     let start = Math.floor((currentPage - 1) / pageLimit) * pageLimit;
     return new Array(pageLimit).fill().map((_, idx) => start + idx + 1);
   };
+
   return (
-    <div>
-      <div className="dataContainer">
+    <Container>
+      <div>
         <RenderComponent data={getPaginatedData()} />
       </div>
 
@@ -64,7 +66,7 @@ function PaginationTable({ data, RenderComponent, pageLimit, dataLimit }) {
           Avançar
         </GoToNext>
       </Pagination>
-    </div>
+    </Container>
   );
 }
 
