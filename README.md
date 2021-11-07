@@ -1,8 +1,14 @@
-<img src="src/assets/desafio.png" height=500/><img src="src/assets/desafio2.png" width=400 height=200/>
+<img src="src/assets/desafio2.png"  height=500/>
 
-# Bem Vindo ao MovieDB React App
+# Bem Vindo ao Desafio Frontend Coodesh
 
-## Projeto desenvolvido com React + Styled Components + MovieDB API
+## Projeto desenvolvido com React + Styled Components + randomuser.me API
+
+![Badge](https://img.shields.io/github/issues/marcusjava/coodesh_frontend)
+![Badge](https://img.shields.io/github/forks/marcusjava/coodesh_frontend)
+![Badge](https://img.shields.io/github/forks/marcusjava/coodesh_frontend)
+![Badge](https://img.shields.io/github/license/marcusjava/coodesh_frontend)
+![Badge](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Fmarcusjava%2Fcoodesh_frontend)
 
 https://mymoviedb-app.netlify.app/
 
