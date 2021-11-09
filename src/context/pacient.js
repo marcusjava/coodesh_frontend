@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import { getPacientsFromAPI } from "../services/api";
 import Fuse from "fuse.js";
 
-const PacientContext = React.createContext();
+export const PacientContext = React.createContext();
 
 export const usePacient = () => useContext(PacientContext);
 

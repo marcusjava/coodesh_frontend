@@ -13,7 +13,7 @@ function Header() {
       <IconContext.Provider
         value={{ style: { fontSize: "40px", color: "#40916c" } }}
       >
-        <FaHandHoldingMedical />
+        <FaHandHoldingMedical data-testid="svg-medical" />
       </IconContext.Provider>
       <IconContext.Provider
         value={{ style: { fontSize: "40px", color: "#40916c" } }}

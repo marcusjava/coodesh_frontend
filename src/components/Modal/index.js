@@ -32,7 +32,7 @@ function DetailsModal({ detail }) {
 
   return (
     <>
-      <Button onClick={() => setShow(true)}>
+      <Button onClick={() => setShow(true)} data-testid="modal">
         <IconContext.Provider value={{ style: { fontSize: "25px" } }}>
           <BiDetail />
         </IconContext.Provider>

@@ -11,8 +11,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 dayjs.locale("pt-br");
 
-const client = new QueryClient();
-
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>

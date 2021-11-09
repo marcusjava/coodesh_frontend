@@ -63,13 +63,6 @@ function TablePacients({ data }) {
   }, [data]);
 
   const { loading } = usePacient();
-  if (!data) {
-    return (
-      <Container>
-        <h2> Sem resultados</h2>
-      </Container>
-    );
-  }
 
   const filterGender = (e) => {
     const { value } = e.target;
@@ -88,20 +81,20 @@ function TablePacients({ data }) {
 
   return (
     <Container>
-      <Table>
+      <Table data-testid="table_pacients">
         <Table.Head>
           <Table.TR>
             <Table.TH>Foto</Table.TH>
             <Table.TH>
               Nome
               {sort === "asc" ? (
-                <Button onClick={sortPacientNames}>
+                <Button onClick={sortPacientNames} data-testid="asc">
                   <IconContext.Provider value={{ style: { fontSize: "25px" } }}>
                     <AiOutlineSortAscending />
                   </IconContext.Provider>
                 </Button>
               ) : (
-                <Button onClick={sortPacientNames}>
+                <Button onClick={sortPacientNames} data-testid="desc">
                   <IconContext.Provider value={{ style: { fontSize: "25px" } }}>
                     <AiOutlineSortDescending />
                   </IconContext.Provider>
@@ -130,30 +123,41 @@ function TablePacients({ data }) {
           </Table.TR>
         </Table.Head>
         <Table.Body>
-          {pacients?.map((item) => (
-            <Table.TR key={item.dob.date}>
-              <Table.TD>
-                <Thumbnail src={item.picture.thumbnail} alt="Foto perfil" />
-              </Table.TD>
-              <Table.TD>{`${item.name.first} ${item.name.last}`}</Table.TD>
-              <Table.TD>
-                {item.gender === "female" ? "Feminino" : "Masculino"}
-              </Table.TD>
-              <Table.TD>{dayjs(item.dob.date).format("DD/MM/YYYY")}</Table.TD>
-              <Table.TD>{item.dob.age}</Table.TD>
-              <Table.TD>{item.nat}</Table.TD>
-              <Table.TD>
-                <DetailsModal detail={item} />
-                <ActionButton to={`/${item.login.uuid}`}>
-                  <IconContext.Provider
-                    value={{ style: { fontSize: "25px", color: "black" } }}
-                  >
-                    <BsLink />
-                  </IconContext.Provider>
-                </ActionButton>
+          {pacients.length === 0 ? (
+            <Table.TR>
+              <Table.TD rowspan="3">
+                <h2>Sem resultados</h2>
               </Table.TD>
             </Table.TR>
-          ))}
+          ) : (
+            pacients?.map((item) => (
+              <Table.TR key={item.dob.date}>
+                <Table.TD>
+                  <Thumbnail src={item.picture.thumbnail} alt="Foto perfil" />
+                </Table.TD>
+                <Table.TD>{`${item.name.first} ${item.name.last}`}</Table.TD>
+                <Table.TD>
+                  {item.gender === "female" ? "Feminino" : "Masculino"}
+                </Table.TD>
+                <Table.TD>{dayjs(item.dob.date).format("DD/MM/YYYY")}</Table.TD>
+                <Table.TD>{item.dob.age}</Table.TD>
+                <Table.TD>{item.nat}</Table.TD>
+                <Table.TD>
+                  <DetailsModal detail={item} />
+                  <ActionButton
+                    to={`/${item.login.uuid}`}
+                    data-testid="detail_button"
+                  >
+                    <IconContext.Provider
+                      value={{ style: { fontSize: "25px", color: "black" } }}
+                    >
+                      <BsLink />
+                    </IconContext.Provider>
+                  </ActionButton>
+                </Table.TD>
+              </Table.TR>
+            ))
+          )}
         </Table.Body>
       </Table>
 

@@ -12,6 +12,7 @@ function Search() {
         size="lg"
         placeholder="Pesquisar paciente"
         onChange={(e) => searchPacients(e.target.value)}
+        data-testid="input_search"
       />
     </Container>
   );
