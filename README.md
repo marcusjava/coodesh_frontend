@@ -1,6 +1,6 @@
 <img src="src/assets/desafio2.png"  height=500/>
 
-# Bem Vindo ao Desafio Frontend Coodesh
+# Bem Vindo ao Desafio Frontend <a href="https://coodesh.com/">Coodesh</a>
 
 ## Projeto desenvolvido com React + Styled Components + randomuser.me API
 
