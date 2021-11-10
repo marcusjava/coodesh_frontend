@@ -1,8 +1,8 @@
 import React from "react";
 import { Container } from "./styles/header";
-import { GiMedicalPackAlt } from "react-icons/gi";
-import { FaRegUserCircle } from "react-icons/fa";
+
 import { FaHandHoldingMedical } from "react-icons/fa";
+
 import { IconContext } from "react-icons";
 
 // import { Container } from './styles';

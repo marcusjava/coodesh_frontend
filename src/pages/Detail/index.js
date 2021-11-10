@@ -1,20 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
-import { IconContext } from "react-icons";
-import { BiDetail } from "react-icons/bi";
-import { AiOutlineClose } from "react-icons/ai";
+import React, { useState } from "react";
+import { Modal, ModalBody } from "reactstrap";
 import dayjs from "dayjs";
 
-import {
-  Button,
-  CloseButton,
-  Thumbnail,
-  Container,
-  Title,
-} from "./styles/detail";
+import { Thumbnail, Container, Title } from "./styles/detail";
 import { useParams } from "react-router-dom";
 import { usePacient } from "../../context/pacient";
-import Spinner from "../../components/Spinner";
 
 // import { Container } from './styles';
 

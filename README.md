@@ -28,7 +28,13 @@ https://mymoviedb-app.netlify.app/
 
 `https://github.com/marcusjava/coodesh_frontend`
 
-2. Instalação
+2. Usando docker
+
+- Construir imagem: docker build -t nome .
+- Testando imagem: docker run -p 80:80 noma_imagem
+- Abra o navegador e digite http://localhost
+
+3. Instalação
    Pré-requisitos: NodeJS instalado `https://nodejs.org/en/`
 
 - Instalar dependencias - `yarn install`

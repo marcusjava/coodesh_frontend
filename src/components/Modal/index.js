@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import React, { useState } from "react";
+import { Modal, ModalBody } from "reactstrap";
 import { IconContext } from "react-icons";
 import { BiDetail } from "react-icons/bi";
 import { BsLink } from "react-icons/bs";
